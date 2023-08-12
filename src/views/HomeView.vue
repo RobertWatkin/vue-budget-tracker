@@ -1,8 +1,13 @@
 <script setup>
+import BudgetTrackerPanel from '../components/BudgetTrackerPanel.vue';
+
 </script>
 
 <template>
   <main>
-    <p class="text-5xl font-bold ml-12">test</p>
+    <BudgetTrackerPanel />
   </main>
 </template>
+
+<style scoped>
+</style>
