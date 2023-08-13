@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { Icon } from '@iconify/vue';
+import MonthSelection from './MonthSelection.vue';
 
 // create a budgetTrackerState. This will hold all the data income, expenses, savings, etc. for each month. This will also hold which is the current selected month. Application will default to the current month.
 
@@ -27,11 +28,6 @@ const currentMonthData = computed(() => {
         expenses: budgetTrackerState.expenses[index],
         savings: budgetTrackerState.savings[index]
     };
-});
-
-const currentMonth = computed(() => {
-    const date = new Date(budgetTrackerState.currentYear, budgetTrackerState.currentMonth - 1);
-    return date.toLocaleString('default', { month: 'long', year: 'numeric' });
 });
 
 const decreaseMonth = () => {
@@ -62,13 +58,10 @@ const increaseMonth = () => {
         <!-- 4. Below these three financial columns will be the summary for the month -->
         <!-- 5. Below the summary for the month will be a yearly summary -->
 
-        <div class="flex flex-between max-w-sm mx-auto">
-            <Icon icon="solar:alt-arrow-left-bold" width="36" @click="decreaseMonth()" />
-            <h2 class="mx-auto text-2xl font-bold">{{ currentMonth }}</h2>
-            <Icon icon="solar:alt-arrow-right-bold" width="36" @click="increaseMonth()" />
-        </div>
+        <MonthSelection :currentMonth="budgetTrackerState.currentMonth" :currentYear="budgetTrackerState.currentYear"
+            :decreaseMonth="decreaseMonth" :increaseMonth="increaseMonth" />
 
-
+        
     </div>
 </template>
 
