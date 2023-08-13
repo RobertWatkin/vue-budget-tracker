@@ -4,7 +4,7 @@ import BudgetTrackerPanel from '../components/BudgetTrackerPanel.vue';
 </script>
 
 <template>
-  <main>
+  <main class="max-w-7xl mx-auto">
     <BudgetTrackerPanel />
   </main>
 </template>
